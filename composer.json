@@ -1,0 +1,34 @@
+{
+    "name": "nkizza/simplerelations",
+    "description": "Simplerelations for Yii2.",
+    "type": "yii2-extension",
+    "keywords": [
+        "yii2",
+        "related",
+        "relations"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Nastya Kizza",
+            "email": "gotnomail@yandex.ru",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/nkizza/simplerelations/issues",
+        "source": "https://github.com/nkizza/simplerelations"
+    },
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "yiisoft/yii2-bootstrap": "~2.0.3",
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "nkizza\\simplerelations\\": "."
+        }
+    },
+}
