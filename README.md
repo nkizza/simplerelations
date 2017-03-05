@@ -83,57 +83,71 @@ edit related records within the current model form.
 Related widget extends `\yii\widgets\InputWidget`. There are two ways of using it, with 
 an `ActiveForm` instance or as a widget setting up its `model` and `attribute`.
 
-```
+```php
 <?php
 use nkizza\simplerelations\RelatedWidget;
 ?>
 
 <h3>Players of match</h3>
 <?= RelationWidget::widget([
-    'model' => $model, //current owner model, required
-    'labels' => true, //creates a labels for related fields. Useful for table-like view. 
-    'attribute' => '_players',  //attribute to store related widgets, required
-    'relation' => 'players',    //relation name, required
-    'condition' => ['home' => 1], //addititional condition to get related models. Added to relation query, optional
-    'options' => ['class' => 'players-table'], //container options, optional
-    'fieldOptions' => ['class' => 'form-inline mb10'], //each fields row container options. optional
+	//current owner model, required
+    'model' => $model,
+     //creates a labels for related fields. Useful for table-like view.
+    'labels' => true,  
+    //attribute to store related widgets, required
+    'attribute' => '_players',  
+    //relation name, required
+    'relation' => 'players',    
+    //addititional condition to get related models. Added to relation query, optional
+    'condition' => ['home' => 1], 
+    //container options, optional
+    'options' => ['class' => 'players-table'], 
+    //each fields row container options, optional
+    'fieldOptions' => ['class' => 'form-inline mb10'], 
     'fields' => [
         [
-            'attribute' => 'home', //related record attribute
-            'method' => 'hiddenInput', //Html helper method
-            'value' => 1,  //preset value. If not set, related record value is used.
+        	//related record attribute
+            'attribute' => 'home', 
+            //Html helper method
+            'method' => 'hiddenInput',
+            //preset value. If not set, related record value is used.
+            'value' => 1,  
         ],
-        
         [
             'attribute' => 'id_player',
             'method' => 'dropDownList',
-            'items' => ArrayHelper::map(\app\models\Player::find()->orderBy(['surname' => SORT_ASC])->all(), 'id', 'fullname'), //items for dropDownList  
+            //items for dropDownList
+            'items' => ArrayHelper::map(\app\models\Player::find()->orderBy(['surname' => SORT_ASC])->all(), 'id', 'fullname'),   
         ],
-        
-        'min_played', //simple text field for attribute `min_played`
+        //simple text field for attribute `min_played`
+        'min_played', 
         
         //Wrapper. Usually used to wrap some fields into a dropdown or another container. 
         //You need to configurate it with `html` option and add `{{content}}` variable into your html to place the fields.
         //`fields` option is configurated similar to the whole widget (dropdowns, hidden fields, etc).
-        
         [
+        	//wrapper label
             'label' => 'Goals and assists dropdown',
+            //required for wrapper method
             'method' => 'wrapper',
+            //container options
             'wrapperOptions' => ['class' => 'dropdown form-group goals'],
+            //required for wrapper. Wrapper template, don't forget to insert {{content}} somewhere
             'html' => '
                 <button id="drop_goals" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-info">
                     Goals <span data-attr="goals"></span> <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="drop_goals">{{content}}</ul>
             ',
+            //fields to wrap
             'fields' => [ 
                 'goals', 'assists', 
             ]
         ],
-        
         [
             'attribute' => 'y_cards',
-            'method' => 'textarea', //other simple Html helper methods are allowed too.
+            //other simple Html helper methods are allowed too.
+            'method' => 'textarea', 
         ],
     ]
 ]);?>
