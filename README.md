@@ -74,7 +74,7 @@ class Match extends \yii\db\ActiveRecord
     
 ```
 
-**RelatedWidget**
+**RelationWidget**
 
 Related widget helps to manage related records. It allows you to build flexible forms to 
 edit related records within the current model form. 
@@ -85,7 +85,7 @@ an `ActiveForm` instance or as a widget setting up its `model` and `attribute`.
 
 ```php
 <?php
-use nkizza\simplerelations\RelatedWidget;
+use nkizza\simplerelations\RelationWidget;
 ?>
 
 <h3>Players of match</h3>
